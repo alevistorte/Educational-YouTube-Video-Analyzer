@@ -1,0 +1,92 @@
+{
+    "summary": "In this video, Jake and Joe share their top 10 climbing tips for beginners. The key points include: 1) Using your toes for better traction and movement, 2) Leveraging your legs' strength instead of just relying on arms, 3) Climbing with straight arms to reduce fatigue, 4) Planning your route before climbing to avoid wasting energy, 5) Using chalk sparingly for better grip, 6) Embracing failure as a learning opportunity, 7) Climbing with various partners to learn different techniques, 8) Climbing as a form of training rather than doing formal training sessions, 9) Investing in properly fitted climbing shoes for maximum performance, and 10) Maintaining a positive attitude and enjoying the climbing experience.",
+    "quiz": [
+        {
+            "question": "What should you primarily use to gain better traction on climbing holds?",
+            "options": {
+                "A": "Toes",
+                "B": "Midsole",
+                "C": "Heels",
+                "D": "Fingers"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Why is it important to climb with straight arms?",
+            "options": {
+                "A": "It looks better",
+                "B": "It helps you relax and reduces fatigue",
+                "C": "It allows for faster climbing",
+                "D": "It uses more strength"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "How should you approach a climbing route before starting?",
+            "options": {
+                "A": "Just start climbing",
+                "B": "Plan your route carefully",
+                "C": "Ask someone else how to climb it",
+                "D": "Ignore the holds"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "What is a common mistake regarding chalk usage?",
+            "options": {
+                "A": "Using too little",
+                "B": "Applying too much",
+                "C": "Using only liquid chalk",
+                "D": "Avoiding chalk altogether"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "What is the best training method for beginners according to the video?",
+            "options": {
+                "A": "Climbing frequently",
+                "B": "Using weights",
+                "C": "Practicing techniques",
+                "D": "Taking rest days"
+            },
+            "answer": "A"
+        }
+    ],
+    "chapters": [
+        {
+            "title": "<Untitled Chapter 1>",
+            "start_time": "0:00",
+            "end_time": "0:06"
+        },
+        {
+            "title": "Tip Number 1 Use Your Toes",
+            "start_time": "0:06",
+            "end_time": "0:42"
+        },
+        {
+            "title": "Two Use Your Legs",
+            "start_time": "0:42",
+            "end_time": "1:17"
+        },
+        {
+            "title": "Three Climb with Straight Arms",
+            "start_time": "1:17",
+            "end_time": "1:48"
+        },
+        {
+            "title": "Read Your Rhythms",
+            "start_time": "1:48",
+            "end_time": "3:21"
+        },
+        {
+            "title": "Tip Number Seven Climb with As Many Different People as You Can",
+            "start_time": "3:21",
+            "end_time": "4:23"
+        },
+        {
+            "title": "Nine Invest in a Well-Fitting Pair of Shoes",
+            "start_time": "4:23",
+            "end_time": "5:14"
+        }
+    ]
+}

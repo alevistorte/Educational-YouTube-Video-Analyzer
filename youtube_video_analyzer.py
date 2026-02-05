@@ -1,11 +1,13 @@
 import json
 import os
+import re
 from urllib.parse import urlparse, parse_qs
 from youtube_transcript_api import YouTubeTranscriptApi
 from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 import scrapetube
+import yt_dlp
 
 
 def extract_video_id(video_id_or_url: str) -> str:
@@ -31,6 +33,27 @@ def search_youtube(query: str, limit: int = 5) -> list[dict]:
     return videos
 
 
+TS_RE = re.compile(
+    r"(?m)^\s*(?P<ts>(?:\d{1,2}:)?\d{1,2}:\d{2})\s*[-–—]?\s*(?P<title>.+?)\s*$"
+)
+
+
+def ts_to_seconds(ts: str) -> int:
+    parts = [int(x) for x in ts.split(":")]
+    if len(parts) == 2:
+        m, s = parts
+        return m * 60 + s
+    h, m, s = parts
+    return h * 3600 + m * 60 + s
+
+
+def seconds_to_ts(sec: int) -> str:
+    h = sec // 3600
+    m = (sec % 3600) // 60
+    s = sec % 60
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
 @tool
 def get_youtube_transcript(video_id_or_url: str) -> str:
     """Fetch the transcript of a YouTube video by video ID or URL."""
@@ -38,6 +61,48 @@ def get_youtube_transcript(video_id_or_url: str) -> str:
     ytt_api = YouTubeTranscriptApi()
     transcript = ytt_api.fetch(video_id)
     return " ".join([snippet.text for snippet in transcript.snippets])
+
+
+def get_youtube_chapters(video_id: str) -> list[dict]:
+    """Get YouTube chapters from metadata or parse timestamps from the description."""
+    url = f"https://www.youtube.com/watch?v={video_id}"
+    with yt_dlp.YoutubeDL({"quiet": True, "skip_download": True}) as ydl:
+        info = ydl.extract_info(url, download=False)
+
+    duration = info.get("duration")
+
+    # Real chapters from metadata
+    if info.get("chapters"):
+        out = []
+        for c in info["chapters"]:
+            st = int(c.get("start_time", 0) or 0)
+            et = c.get("end_time")
+            out.append({
+                "title": (c.get("title") or "").strip(),
+                "start_time": seconds_to_ts(st),
+                "end_time": None if et is None else seconds_to_ts(int(et)),
+            })
+        return out
+
+    # Fallback: parse timestamps from description
+    desc = info.get("description") or ""
+    starts = []
+    for m in TS_RE.finditer(desc):
+        st_sec = ts_to_seconds(m.group("ts"))
+        starts.append({"title": m.group("title").strip(), "start_sec": st_sec})
+
+    starts.sort(key=lambda x: x["start_sec"])
+
+    out = []
+    for i, item in enumerate(starts):
+        st = item["start_sec"]
+        nxt = starts[i + 1]["start_sec"] if i + 1 < len(starts) else duration
+        out.append({
+            "title": item["title"],
+            "start_time": seconds_to_ts(st),
+            "end_time": None if nxt is None else seconds_to_ts(int(nxt)),
+        })
+    return out
 
 
 # Create agent with tool
@@ -104,6 +169,8 @@ def main():
             else:
                 output = {"raw_response": final_message}
 
+        output["chapters"] = get_youtube_chapters(video_id)
+
         with open(cache_file, "w") as f:
             json.dump(output, f, indent=4)
 
@@ -113,6 +180,18 @@ def main():
     print("=" * 60)
     print(output.get("summary", "No summary available."))
     print("=" * 60)
+
+    # Show chapters
+    print("\nCHAPTERS")
+    print("-" * 60)
+    chapters = output.get("chapters", [])
+    if chapters:
+        for ch in chapters:
+            end = f" - {ch['end_time']}" if ch["end_time"] else ""
+            print(f"  [{ch['start_time']}{end}] {ch['title']}")
+    else:
+        print("  No chapters available for this video.")
+    print("-" * 60)
 
     # Run interactive quiz
     quiz = output.get("quiz", [])

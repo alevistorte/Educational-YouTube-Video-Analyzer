@@ -1,0 +1,72 @@
+{
+    "summary": "The video provides an introduction to calculus, focusing on the concepts of slope, average rate of change, and derivatives. It begins by explaining the slope of a line through the rise over run formula, which is adapted to functions using function notation. As the discussion progresses, the concept of secant lines and tangent lines is introduced, illustrating the transition from average rate of change to instantaneous rate of change, which is defined as the derivative. A specific example using the function f(x) = x^2 demonstrates how to find the derivative and the slope of the tangent line at a given point, reinforcing the algebraic manipulation required for calculus. The video ends by encouraging viewers to engage with the material and seek clarification on any questions they might have.",
+    "quiz": [
+        {
+            "question": "What is the formula used to calculate the slope of a line?",
+            "options": {
+                "A": "Rise over run",
+                "B": "Run over rise",
+                "C": "Change in y over change in x",
+                "D": "Total distance over time"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "What do we call the line that connects two points on a curve?",
+            "options": {
+                "A": "Tangent line",
+                "B": "Normal line",
+                "C": "Secant line",
+                "D": "Chord line"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "What happens when we take the limit as H approaches zero?",
+            "options": {
+                "A": "We find the average rate of change",
+                "B": "We find the instantaneous rate of change",
+                "C": "We calculate the total area under the curve",
+                "D": "We determine the maximum slope"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "In the equation f(x) = x^2, what is the derivative f'(x)?",
+            "options": {
+                "A": "x",
+                "B": "2x",
+                "C": "x^2",
+                "D": "2x^2"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "What is the slope of the tangent line at the point (1, 1) for f(x) = x^2?",
+            "options": {
+                "A": "1",
+                "B": "2",
+                "C": "0",
+                "D": "4"
+            },
+            "answer": "B"
+        }
+    ],
+    "chapters": [
+        {
+            "title": "Line",
+            "start_time": "0:00",
+            "end_time": "0:56"
+        },
+        {
+            "title": "Secant",
+            "start_time": "0:56",
+            "end_time": "3:12"
+        },
+        {
+            "title": "Slope",
+            "start_time": "3:12",
+            "end_time": "5:05"
+        }
+    ]
+}
