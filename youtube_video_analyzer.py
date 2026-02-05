@@ -5,6 +5,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
+import scrapetube
 
 
 def extract_video_id(video_id_or_url: str) -> str:
@@ -15,6 +16,19 @@ def extract_video_id(video_id_or_url: str) -> str:
     if parsed.hostname == "youtu.be":
         return parsed.path.lstrip("/")
     return video_id_or_url
+
+
+def search_youtube(query: str, limit: int = 5) -> list[dict]:
+    """Search YouTube and return a list of video results."""
+    videos = []
+    for video in scrapetube.get_search(query, limit=limit):
+        videos.append({
+            "video_id": video["videoId"],
+            "title": video["title"]["runs"][0]["text"],
+            "channel": video.get("ownerText", {}).get("runs", [{}])[0].get("text", "Unknown"),
+            "duration": video.get("lengthText", {}).get("simpleText", "N/A"),
+        })
+    return videos
 
 
 @tool
@@ -32,9 +46,25 @@ agent = create_agent(llm, [get_youtube_transcript])
 
 
 def main():
-    # video_id = input("Enter the YouTube video ID: ")
-    # video_id = "dQw4w9WgXcQ"  # Example video ID
-    video_id = "aircAruvnKk"  # Example video ID with transcript
+    query = input("What topic do you want to learn about? ")
+    print(f"\nSearching YouTube for: {query}\n")
+    results = search_youtube(query)
+
+    if not results:
+        print("No videos found. Try a different search.")
+        return
+
+    for i, video in enumerate(results, 1):
+        print(f"  {i}) {video['title']}")
+        print(f"     Channel: {video['channel']}  |  Duration: {video['duration']}")
+
+    choice = input(f"\nPick a video (1-{len(results)}): ").strip()
+    if not choice.isdigit() or not 1 <= int(choice) <= len(results):
+        print("Invalid choice.")
+        return
+
+    video_id = results[int(choice) - 1]["video_id"]
+    print(f"\nSelected: {results[int(choice) - 1]['title']}")
     os.makedirs("files", exist_ok=True)
     cache_file = os.path.join("files", f'questions_summary_{video_id}.json')
 

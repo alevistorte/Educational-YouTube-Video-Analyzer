@@ -1,0 +1,55 @@
+{
+    "summary": "The video explains five key aspects of neural networks in under five minutes. First, neural networks consist of layers: an input layer, hidden layers, and an output layer, mimicking human brain function to recognize patterns. Second, each node, or artificial neuron, acts as a linear regression model, where weights determine the influence of inputs on outputs. Third, data is passed through the network in a feed forward manner. Fourth, neural networks learn from training data, adjusting weights and biases over time to minimize prediction errors using a cost function and gradient descent. Finally, the video mentions different types of neural networks, including convolutional neural networks (CNNs) for image recognition and recurrent neural networks (RNNs) for time series predictions.",
+    "quiz": [
+        {
+            "question": "What are the primary components of a neural network?",
+            "options": {
+                "A": "Input layer, hidden layer, and output layer",
+                "B": "Input layer and output layer only",
+                "C": "Only hidden layers",
+                "D": "Input layer and bias only"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "What is the purpose of weights in a neural network?",
+            "options": {
+                "A": "To influence the output based on input data",
+                "B": "To increase the speed of computation",
+                "C": "To define the architecture of the network",
+                "D": "To serve as thresholds only"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "What does the term 'feed forward' refer to in neural networks?",
+            "options": {
+                "A": "The process of passing data through the network layers",
+                "B": "The backward propagation of errors",
+                "C": "The initial setup of the network",
+                "D": "Data storage methods"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "How do neural networks improve their accuracy?",
+            "options": {
+                "A": "By using training data and adjusting weights",
+                "B": "By increasing the number of hidden layers",
+                "C": "By reducing the input data size",
+                "D": "By flattening all layers in the network"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "What type of neural network is suited for image recognition?",
+            "options": {
+                "A": "Convolutional Neural Network (CNN)",
+                "B": "Recurrent Neural Network (RNN)",
+                "C": "Feed Forward Network",
+                "D": "Linear Regression Model"
+            },
+            "answer": "A"
+        }
+    ]
+}

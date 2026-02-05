@@ -1,0 +1,55 @@
+{
+    "summary": "The video covers the concept of fine-tuning in the context of artificial neural networks, emphasizing its link to transfer learning. Fine-tuning involves taking a pre-trained model and adjusting it for a new, but related, task, allowing developers to leverage existing learned features rather than starting from scratch. The process includes modifying the structure of an original model, freezing its original layers to preserve learned weights, and training only the new layers with data relevant to the new task. The video provides examples and encourages viewers to explore further technical implementations.",
+    "quiz": [
+        {
+            "question": "What is fine-tuning in neural networks?",
+            "options": {
+                "A": "Adjusting a pre-trained model for a new task.",
+                "B": "Creating a model from scratch.",
+                "C": "Collecting data for training.",
+                "D": "Evaluating a model's performance."
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Fine-tuning is closely linked to which concept?",
+            "options": {
+                "A": "Supervised learning.",
+                "B": "Transfer learning.",
+                "C": "Unsupervised learning.",
+                "D": "Reinforcement learning."
+            },
+            "answer": "B"
+        },
+        {
+            "question": "What is the purpose of freezing layers in a fine-tuned model?",
+            "options": {
+                "A": "To prevent weight updates during training.",
+                "B": "To increase training speed.",
+                "C": "To improve model accuracy.",
+                "D": "To add new features to the model."
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Which part of the original model might be removed during fine-tuning?",
+            "options": {
+                "A": "The input layer.",
+                "B": "The hidden layers.",
+                "C": "The last layer.",
+                "D": "None of the above."
+            },
+            "answer": "C"
+        },
+        {
+            "question": "What type of features might a pre-trained model have learned that can aid in fine-tuning?",
+            "options": {
+                "A": "Specific features related only to the new task.",
+                "B": "General features like edges and textures.",
+                "C": "Irrelevant features from a different domain.",
+                "D": "Features that do not contribute to learning."
+            },
+            "answer": "B"
+        }
+    ]
+}
