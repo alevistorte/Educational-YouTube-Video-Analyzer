@@ -1,55 +1,55 @@
 {
-    "summary": "The video explains the structure of a neural network, particularly in the context of recognizing handwritten digits. It highlights how the brain's ability to recognize patterns, such as digits, can inspire the design of neural networks. The video describes how a network consists of an input layer (with neurons corresponding to each pixel of an image), hidden layers (which process the information), and an output layer (which represents the possible digits). The neurons hold values between 0 and 1, representing their activation level. The video also discusses the importance of weights and biases in determining how the activations of one layer affect the next, and the challenges involved in training neural networks to effectively recognize patterns.",
+    "summary": "The video explains the foundational structure of neural networks, particularly in the context of recognizing handwritten digits. It discusses how neural networks consist of layers of neurons where each neuron holds a numerical value (activation) based on pixel brightness. The input layer consists of 784 neurons, each representing a pixel of a 28x28 grayscale image. The output layer has 10 neurons corresponding to the digits 0-9. The video describes how hidden layers process inputs through weighted connections and biases, influenced by the activation of previous layers. This layered architecture allows the network to gradually recognize patterns, resembling how human brains operate. The video aims to demystify neural networks, emphasizing their mathematical structure and making them accessible for those unfamiliar with the concept.",
     "quiz": [
         {
-            "question": "What is the primary purpose of the neural network discussed in the video?",
+            "question": "What is the primary function of the neurons in the input layer of the neural network discussed in the video?",
             "options": {
-                "A": "To recognize handwritten digits",
-                "B": "To create images",
-                "C": "To edit videos",
-                "D": "To generate music"
+                "A": "To represent the pixel values of the input image",
+                "B": "To classify the digits",
+                "C": "To store weights and biases",
+                "D": "To connect to output neurons"
             },
             "answer": "A"
         },
         {
-            "question": "What does each neuron in the input layer of the network represent?",
+            "question": "How many layers does the neural network structure in the video consist of, including input and output layers?",
             "options": {
-                "A": "A specific digit",
-                "B": "A pixel in the input image",
-                "C": "A network layer",
-                "D": "A training example"
-            },
-            "answer": "B"
-        },
-        {
-            "question": "What is a common function used to squish the weighted sum into a range between 0 and 1?",
-            "options": {
-                "A": "ReLU",
-                "B": "Sigmoid",
-                "C": "Tangent",
-                "D": "Linear"
-            },
-            "answer": "B"
-        },
-        {
-            "question": "What are weights and biases used for in a neural network?",
-            "options": {
-                "A": "To organize data",
-                "B": "To influence activations from one layer to the next",
-                "C": "To display outputs more clearly",
-                "D": "To connect to the internet"
-            },
-            "answer": "B"
-        },
-        {
-            "question": "How many total weights and biases does the discussed network have?",
-            "options": {
-                "A": "784",
-                "B": "10,000",
-                "C": "13,000",
-                "D": "1,000"
+                "A": "Three layers",
+                "B": "Five layers",
+                "C": "Four layers",
+                "D": "Six layers"
             },
             "answer": "C"
+        },
+        {
+            "question": "What mathematical function is often applied to the weighted sums of activations in the network?",
+            "options": {
+                "A": "Linear function",
+                "B": "Exponential function",
+                "C": "Sigmoid function",
+                "D": "Polynomial function"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "What is the purpose of weights and biases in the neural network?",
+            "options": {
+                "A": "To stabilize the neural network",
+                "B": "To determine how inputs are transformed into outputs",
+                "C": "To enhance visual representation",
+                "D": "To increase the number of neurons"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "What learning process is hinted to happen in the next video?",
+            "options": {
+                "A": "How to increase the number of layers",
+                "B": "How the network learns to adjust weights and biases",
+                "C": "How to implement dropout layers",
+                "D": "How to visualize neural networks"
+            },
+            "answer": "B"
         }
     ]
 }

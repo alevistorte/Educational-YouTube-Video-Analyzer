@@ -64,8 +64,37 @@ def main():
 
     with open(f'questions_summary_{video_id}.json', "w") as f:
         json.dump(output, f, indent=4)
-    print(
-        f"Transcript summary and quiz saved to questions_summary_{video_id}.json")
+
+    # Show summary
+    print("\n" + "=" * 60)
+    print("VIDEO SUMMARY")
+    print("=" * 60)
+    print(output.get("summary", "No summary available."))
+    print("=" * 60)
+
+    # Run interactive quiz
+    quiz = output.get("quiz", [])
+    if not quiz:
+        print("No quiz questions were generated.")
+        return
+
+    print(f"\nQUIZ TIME! {len(quiz)} questions\n")
+    score = 0
+    for i, q in enumerate(quiz, 1):
+        print(f"Question {i}: {q['question']}")
+        for letter, text in q["options"].items():
+            print(f"  {letter}) {text}")
+        answer = input("Your answer (A/B/C/D): ").strip().upper()
+        correct = q["answer"].upper()
+        if answer == correct:
+            print("Correct!\n")
+            score += 1
+        else:
+            print(f"Wrong! The correct answer was {correct}) {q['options'][correct]}\n")
+
+    print("=" * 60)
+    print(f"FINAL SCORE: {score}/{len(quiz)}")
+    print("=" * 60)
 
 
 if __name__ == "__main__":
